@@ -1,0 +1,16 @@
+{
+  "name": "trashy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@discordjs/opus": "0.3.2",
+    "discord.js": "12.3.1",
+    "google-tts-api": "0.0.5",
+    "require-all": "3.0.0",
+    "static-ffmpeg": "3.2.1"
+  },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "*"
+  }
+}
