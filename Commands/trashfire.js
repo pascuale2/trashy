@@ -6,7 +6,10 @@ class TrashFire {
         const path = "./Assets/trashFireGifs";
         fs.readdir(path, (err, files) => {
             files.forEach((file) => {
-                trashGifs.push(new Discord.MessageEmbed().setTitle("Trash Fire").attachFiles(path + "/" + file));
+                trashGifs.push({
+                    embeds: [ new Discord.MessageEmbed().setTitle("Trash Fire")], 
+                    files: [ path + "/" + file ]
+                });
             });
         });
 
@@ -24,7 +27,6 @@ class TrashFire {
                 index = i;
             }
         }
-
         message.channel.send(this.trashGifs[index]).catch(err => console.log(err));
     }
 

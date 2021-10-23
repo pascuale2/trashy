@@ -1,6 +1,6 @@
 class TrashSmoke {
     run(client, message, args) {
-        message.member.voice.kick("Ninjaed.");
+        message.member.voice.disconnect("Ninjaed.");
         const voice = require('../Utility/playvoice');
         voice.Play(message, 'Assets/smoke.m4a');
     }
