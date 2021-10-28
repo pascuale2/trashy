@@ -12,7 +12,7 @@
     "static-ffmpeg": "3.2.1"
   },
   "engines": {
-    "node": "12.18.3",
+    "node": "*",
     "npm": "*"
   }
 }

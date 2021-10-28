@@ -1,9 +1,11 @@
 const Discord = require('discord.js');
 const requireAll = require("require-all");
 
-const { prefix, token } = require("./config.json");
+const { prefix } = require("./config.json");
 const tts = require("./Utility/playTTS");
 const constants = require("./Utility/constants");
+
+const token = process.env.DISCORD_TOKEN;
 
 const client = new Discord.Client({
     intents: [ Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.DIRECT_MESSAGES ]
