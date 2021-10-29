@@ -31,29 +31,13 @@ client.on("messageCreate", message => {
 
     const [cmd, ...args] = message.content.trim().slice(prefix.length).split(/\s+/g);
 
-    if (cmd == "testWelcome") {
-        message.author.send(constants.welcomeMessage).catch(err => console.log(err));
-    }
-
     const command = client.commands.get(cmd);
     if (command) {
         command.run(client, message, args);
     }
 });
 
-// client.on("voiceStateUpdate", (oldState, newState) => {
-//     if (!oldState.member.user.bot && oldState.channel != newState.channel) {
-//         if (newState.channel && newState.channel.id == constants.demoVoiceChannelId) {
-//             var name = newState.member.user.username;
-//             if (newState.member.nickname) name = newState.member.nickname;
-//             tts.Play(newState.channel, `${name} has joined the demo.`);
-//         }
-//     }
-// });
-
 client.on("guildMemberAdd", member => {
-    console.log("New member!");
-    member.user.send(constants.welcomeMessage).catch(err => console.log(err));
 });
 
 client.login(token);
