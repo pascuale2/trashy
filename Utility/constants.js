@@ -1,4 +1,6 @@
-const welcomeMessage = `Welcome to the Serious Labs Discord Server!
+module.exports = {
+    welcomeMessage:
+`Welcome to the Serious Labs Discord Server!
 The SLI Discord Server aims to replicate the social connections we lost when we changed to a remote studio. The server is purely optional and how you interact with it is purely up to you.
 Before you do anything:
 
@@ -15,9 +17,5 @@ STEP 3: Join a Room! Or Not! Here's a rundown:
 
 :loud_sound:Library: chat is disabled, but you can listen to shared music using >play [link] in the #music-bot text channel
 
-BREAKOUT ROOMS are for quick breakout discussions. You can make them private, or add your own!`;
-
-const demoVoiceChannelId = "779099601470226483";
-
-module.exports.welcomeMessage = welcomeMessage;
-module.exports.demoVoiceChannelId = demoVoiceChannelId;
+BREAKOUT ROOMS are for quick breakout discussions. You can make them private, or add your own!`
+};
