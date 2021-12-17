@@ -6,7 +6,7 @@ class TrashSick {
 
     config = {
         name: "sick",
-        help: "People are getting sick."
+        help: "If motion base stops working."
     }
 }
 
