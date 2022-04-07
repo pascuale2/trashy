@@ -27,12 +27,25 @@ client.on("ready", () => {
 });
 
 client.on("messageCreate", message => {
-    if (message.author.bot || message.content[0] != prefix) { return; }
+    if (message.author.bot ||
+        (message.content[0] != prefix &&
+        message.content.length != 1)) { return; }
 
+    if (message.content.length == 1) {
+        let command = client.commands.get(message.content);
+        if (command && command.config.overridePrefix) {
+            console.log('Running command: `' + message.content + '`');
+            command.run(client, message, [message.content]);
+        } else {
+            return;
+        }
+    }
+        
     const [cmd, ...args] = message.content.trim().slice(prefix.length).split(/\s+/g);
 
-    const command = client.commands.get(cmd);
+    command = client.commands.get(cmd);
     if (command) {
+        console.log('Running command: `' + cmd + '`');
         command.run(client, message, args);
     }
 });
