@@ -1,26 +1,25 @@
-const Stream = require("stream");
-const https = require("https");
 const tts = require("google-tts-api");
+const voice = require("@discordjs/voice");
 
-
-function getVoiceStream(text) {
-    const stream = new Stream.PassThrough();
-    tts(text, "en-US", 1).then(url => {
-        const request = https.get(url, (response, err) => {
-            response.pipe(stream);
-        });
-    });
-
-    return stream;
+function getVoiceResource(text) {
+    return voice.createAudioResource(tts.getAudioUrl(text));
 }
 
 function Play(channel, text) {
-    channel.join().then(connection => {
-        const dispatcher = connection.play(getVoiceStream(text));
-        dispatcher.on("finish", () => {
-            channel.leave();
+    if (channel) {
+        const connection = voice.joinVoiceChannel({
+            channelId: channel.id,
+            guildId: channel.guild.id,
+            adapterCreator: channel.guild.voiceAdapterCreator
         });
-    }).catch(err => console.log(err));
+        const player = voice.createAudioPlayer();
+        connection.subscribe(player);
+        player.play(getVoiceResource(text));
+        player.on('idle', () => {
+            connection.destroy();
+        });
+    }
 }
 
 module.exports.Play = Play;
+module.exports.getVoiceResource = getVoiceResource;

@@ -1,7 +1,9 @@
+const voice = require("@discordjs/voice");
+
 class WtfYell {
     run(client, message, args) {
-        const voice = require('../Utility/playvoice');
-        voice.Play(message, 'Assets/wtf.m4a');
+        const player = require('../Utility/playvoice');
+        player.Play(message, voice.createAudioResource('Assets/wtf.m4a'));
     }
 
     config = {

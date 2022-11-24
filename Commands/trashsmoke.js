@@ -1,8 +1,10 @@
+const voice = require("@discordjs/voice");
+
 class TrashSmoke {
     run(client, message, args) {
         message.member.voice.disconnect("Ninjaed.");
-        const voice = require('../Utility/playvoice');
-        voice.Play(message, 'Assets/smoke.m4a');
+        const player = require('../Utility/playvoice');
+        player.Play(message, voice.createAudioResource('Assets/smoke.m4a'));
     }
 
     config = {

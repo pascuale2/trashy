@@ -1,8 +1,10 @@
+const voice = require("@discordjs/voice");
+
 class TrashLastTime {
     run(client, message, args) {
         message.member.voice.disconnect("Justined.");
-        const voice = require('../Utility/playvoice');
-        voice.Play(message, 'Assets/lasttime.m4a');
+        const player = require('../Utility/playvoice');
+        player.Play(message, voice.createAudioResource('Assets/lasttime.m4a'));
     }
 
     config = {

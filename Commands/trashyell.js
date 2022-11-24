@@ -1,7 +1,17 @@
+const tts = require("../Utility/playTTS");
+const voice = require("@discordjs/voice");
+
 class TrashYell {
     run(client, message, args) {
-        const voice = require('../Utility/playvoice');
-        voice.Play(message, 'Assets/trash.m4a');
+        const player = require('../Utility/playvoice');
+        if(args && args.length) {
+            player.Play(message, [
+                tts.getVoiceResource(args.join(" ") + " is"),
+                voice.createAudioResource('Assets/trash.m4a'),
+            ]);
+        } else {
+            player.Play(message, voice.createAudioResource('Assets/trash.m4a'));
+        }
     }
 
     config = {

@@ -8,7 +8,14 @@ const constants = require("./Utility/constants");
 const token = process.env.DISCORD_TOKEN;
 
 const client = new Discord.Client({
-    intents: [ Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.DIRECT_MESSAGES ]
+    intents: [ 
+        Discord.GatewayIntentBits.Guilds, 
+        Discord.GatewayIntentBits.GuildMessages, 
+        Discord.GatewayIntentBits.GuildMembers, 
+        Discord.GatewayIntentBits.GuildVoiceStates, 
+        Discord.GatewayIntentBits.DirectMessages,
+        Discord.GatewayIntentBits.MessageContent
+    ]
 });
 client.commands = new Discord.Collection();
 
@@ -22,11 +29,11 @@ for (const fileName in commandFiles) {
     client.commands.set(command.config.name, command);
 }
 
-client.on("ready", () => {
+client.on(Discord.Events.ClientReady, () => {
     console.log("Ready");
 });
 
-client.on("messageCreate", message => {
+client.on(Discord.Events.MessageCreate, message => {
     if (message.author.bot ||
         (message.content[0] != prefix &&
         message.content.length != 1)) { return; }

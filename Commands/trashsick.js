@@ -1,7 +1,9 @@
+const voice = require("@discordjs/voice");
+
 class TrashSick {
     run(client, message, args) {
-        const voice = require('../Utility/playvoice');
-        voice.Play(message, 'Assets/sick.m4a');
+        const player = require('../Utility/playvoice');
+        player.Play(message, voice.createAudioResource('Assets/sick.m4a'));
     }
 
     config = {

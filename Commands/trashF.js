@@ -7,8 +7,8 @@ class TrashFire {
         fs.readdir(path, (err, files) => {
             files.forEach((file) => {
                 trashGifs.push({
-                    embeds: [ new Discord.MessageEmbed().setTitle("Paying respects")], 
-                    files: [ path + "/" + file ]
+                    embeds: [ new Discord.EmbedBuilder().setTitle("Paying respects") ], 
+                    files: [ new Discord.AttachmentBuilder(path + "/" + file) ]
                 });
             });
         });
