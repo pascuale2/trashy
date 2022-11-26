@@ -5,8 +5,12 @@ class TrashYell {
     run(client, message, args) {
         const player = require('../Utility/playvoice');
         if(args && args.length) {
-            player.Play(message, [
-                tts.getVoiceResource(args.join(" ") + " is"),
+            let text = args.join(" ") + " is";
+            if(text.length > 64) {
+                message.channel.send("Jacob, no! :trash:");
+            }
+            player.Play(message, [                
+                tts.getVoiceResource(text),
                 voice.createAudioResource('Assets/trash.m4a'),
             ]);
         } else {
