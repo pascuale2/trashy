@@ -21,6 +21,10 @@ class TrashUnity {
         "Unity is the reason why God is not talking to us anymore.",
         "Everyone is allowed to act stupid once, but Unity... Unity is abusing that privilege.",
         "Unity didn't change since last time I used it. It should.",
+        "My favorite feature of Unity is the uninstaller.",
+        "There are two kind of people in this world. People who despise Unity... and liars.",
+        "Here come the test results: Unity is horrible. We weren't even testing for that.",
+        "Damn it unity why won't you work! No! Stop! Please get your shit together. Oh sorry, I didn't realize I joined the call.",
     ]
 
     constructor() {
