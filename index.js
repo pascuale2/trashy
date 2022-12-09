@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const requireAll = require("require-all");
+const requireAllAuto = require("require-all");
 
 const { prefix } = require("./config.json");
 const tts = require("./Utility/playTTS");
@@ -20,7 +21,7 @@ const client = new Discord.Client({
 client.automations = new Discord.Collection();
 client.commands = new Discord.Collection();
 
-const automationFiles = requireAll({
+const automationFiles = requireAllAuto({
     dirname: `${__dirname}/Automations`,
     filter: /^(?!-)(.+)\.js$/
 });
