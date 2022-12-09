@@ -8,7 +8,7 @@ class TrashWhat {
 
     config = {
         name: "what",
-        help: "It's not fault, I swear"
+        help: "It's not my fault, I swear"
     }
 }
 
