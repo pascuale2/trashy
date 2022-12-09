@@ -17,12 +17,23 @@ const client = new Discord.Client({
         Discord.GatewayIntentBits.MessageContent
     ]
 });
+client.automations = new Discord.Collection();
 client.commands = new Discord.Collection();
+
+const automationFiles = requireAll({
+    dirname: `${__dirname}/Automations`,
+    filter: /^(?!-)(.+)\.js$/
+});
 
 const commandFiles = requireAll({
     dirname: `${__dirname}/Commands`,
     filter: /^(?!-)(.+)\.js$/
 });
+
+for (const fileName in automationFiles) {
+    const automation = new automationFiles[fileName]();
+    client.automations.set(automation.config.name, automation);
+}
 
 for (const fileName in commandFiles) {
     const command = new commandFiles[fileName]();
@@ -58,6 +69,13 @@ client.on(Discord.Events.MessageCreate, message => {
 });
 
 client.on("guildMemberAdd", member => {
+});
+
+client.on('voiceStateUpdate', (oldState, newState) => {
+    if (oldState.channelID === null) {
+        console.log('user joined channel', newState.channelID);
+        client.automations.get('goodmorning').run(client, message, newState);
+    }
 });
 
 client.login(token);
